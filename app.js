@@ -93,9 +93,8 @@ function createGalleryItemsMarkup (array) {
  };
 
 galleryListEl.addEventListener('click', onGalleryItemClick);
-modalBtnEl.addEventListener('click', onModalBtnClick);
-modalBoxEl.addEventListener('click', onModalBoxClick);
-window.addEventListener('click', onModalBoxkeydown );
+modalBtnEl.addEventListener('click', onModalClose);
+modalBoxEl.addEventListener('click', onModalClose);
 
 
 function onGalleryItemClick(evt) {
@@ -110,20 +109,12 @@ function onGalleryItemClick(evt) {
   
 };
 
-function onModalBtnClick() {
+function onModalClose() {
   modalEl.classList.remove('is-open');
   modalImageEl.src = "";
 };
 
-function onModalBoxClick(evt) {
-  modalEl.classList.remove('is-open');
-  modalImageEl.src = "";
-};
 
-function onModalBoxkeydown(evt) {
-
-  console.log(evt);
- };
  
 
 
