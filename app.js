@@ -68,6 +68,7 @@ const galleryListEl = document.querySelector('.js-gallery');
 const modalEl = document.querySelector('.js-lightbox');
 const modalImageEl = document.querySelector('.lightbox__image');
 const modalBtnEl = document.querySelector('[type="button"]');
+const modalBoxEl = document.querySelector('.lightbox__overlay');
 
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
@@ -78,6 +79,7 @@ function createGalleryItemsMarkup (array) {
     `<li class="gallery__item">
   <a
     class="gallery__link"
+    href="${element.original}"
     
   >
     <img
@@ -91,18 +93,37 @@ function createGalleryItemsMarkup (array) {
  };
 
 galleryListEl.addEventListener('click', onGalleryItemClick);
+modalBtnEl.addEventListener('click', onModalBtnClick);
+modalBoxEl.addEventListener('click', onModalBoxClick);
+window.addEventListener('click', onModalBoxkeydown );
+
 
 function onGalleryItemClick(evt) {
   if (evt.target.nodeName !== 'IMG') {
     return;
   }
-
+  
+  evt.preventDefault(); //отмена перехода по ссылке
   modalEl.classList.add('is-open');
   modalImageEl.src = evt.target.dataset.source;
-    
-    // console.log(evt.target.dataset.source);
+  modalImageEl.alt = evt.target.alt;
   
 };
+
+function onModalBtnClick() {
+  modalEl.classList.remove('is-open');
+  modalImageEl.src = "";
+};
+
+function onModalBoxClick(evt) {
+  modalEl.classList.remove('is-open');
+  modalImageEl.src = "";
+};
+
+function onModalBoxkeydown(evt) {
+
+  console.log(evt);
+ };
  
 
 
