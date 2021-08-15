@@ -113,10 +113,3 @@ function onModalClose() {
   modalEl.classList.remove('is-open');
   modalImageEl.src = "";
 };
-
-
- 
-
-
-
-
